@@ -18,7 +18,7 @@ class DataHandler:
         self.data = None
     def get_data(self):
         print(" - - - fetch data: - - - ")
-        self.data = pd.read_csv('../earthquakes.csv') 
+        self.data = pd.read_csv('~/project_cloud_computing/ml/earthquakes.csv') 
         print( " - - - data loaded - - - \nFiles : earthquakes {}".format(self.data.shape))
     def get_process_data(self):
         self.get_data()

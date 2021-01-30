@@ -1,3 +1,4 @@
 .ipynb_checkpoints
 ml/earthquakes.csv
 ml/model.joblib
+ml/utils/__pycache__/

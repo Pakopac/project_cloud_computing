@@ -1,4 +1,4 @@
-from utils.util import *
+from utils.utils import *
 
 def DataManager(d:DataHandler=None, fr: FeatureRecipe=None, fe:FeatureExtractor=None):
     """
@@ -12,7 +12,6 @@ def DataManager(d:DataHandler=None, fr: FeatureRecipe=None, fe:FeatureExtractor=
     return Fextractor.split(0.1)
  
 X_train, X_test, y_train, y_test = DataManager()
-X_train, X_test, y_train, y_test = Fextractor.split(0.1)
 m = ModelBuilder() 
 m.train(X_train, y_train)
 m.print_accuracy(X_test, y_test)
