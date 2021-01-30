@@ -5,10 +5,12 @@ import seaborn as sns
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.linear_model import LinearRegression
 import joblib
 import logging
 import datetime
 import time
+import logging
 
 class DataHandler:
     """
@@ -17,9 +19,9 @@ class DataHandler:
     def __init__(self):
         self.data = None
     def get_data(self):
-        print(" - - - fetch data: - - - ")
+        logging.info(" - - - fetch data: - - - ")
         self.data = pd.read_csv('~/project_cloud_computing/ml/earthquakes.csv') 
-        print( " - - - data loaded - - - \nFiles : earthquakes {}".format(self.data.shape))
+        logging.info( " - - - data loaded - - - \nFiles : earthquakes {}".format(self.data.shape))
     def get_process_data(self):
         self.get_data()
         print(" - - - data processed - - - ")
@@ -153,17 +155,26 @@ class ModelBuilder:
     def __init__(self, model_path: str = None, save: bool = None):
         self.model = None
         
-    def train(self, X, Y):
-        self.model = RandomForestRegressor().fit(X, Y)
+    def train(self, X, Y, model):
+        if model == "RandomForestRegressor":
+            self.model = RandomForestRegressor().fit(X, Y)
+        
+        elif model == "LinearRegression":
+            self.model = LinearRegression().fit(X, Y)
         
     def predict_test(self, X) -> np.ndarray:
+        print("- - - prediction: - - -") 
+        print(self.model.predict(X))
         return self.model.predict(X)
     
     def save_model(self, path:str):
         joblib.dump((self.model), '{}model.joblib'.format(path))
+        print('- - - Model Saved - - -')
         pass
                     
     def print_accuracy(self, X, Y):
+        print("- - - Score: - - -") 
+        print(self.model.score(X, Y))
         return self.model.score(X, Y)
         pass
     

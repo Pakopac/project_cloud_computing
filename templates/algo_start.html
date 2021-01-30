@@ -1,0 +1,31 @@
+
+{% block content %}
+
+<html>
+<head>
+    <title>Project Cloud Computing</title>
+</head>
+<body>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Run Algo</h1>
+            <form action="/algo" method="POST">
+                <label for="model">Model</label>
+                <select id="model" name="model">
+                    <option>RandomForestRegressor</option>
+                    <option>LinearRegression</option>
+                </select>
+                <br><label for="split">Split</label>
+                <input type="number" name="split" step="0.1" value="0.1">
+                <br><button type="submit" class="btn btn-primary">Run</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+{% endblock %}
