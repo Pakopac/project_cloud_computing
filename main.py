@@ -22,7 +22,6 @@ async def model_page(request: Request):
 async def model(request: Request, model: str = Form(...), split: float = Form(...)):
     bashCommand = "python /home/lilian/project_cloud_computing/ml/model.py --model {} -split {}".format(model, split)
     output = subprocess.check_output(bashCommand, shell=True)
-    print(output)
     return templates.TemplateResponse("algo_result.html", {"request": request, "output": output})
 
 if __name__ == "__main__":
