@@ -20,7 +20,7 @@ async def model_page(request: Request):
 
 @app.post("/algo", response_class=HTMLResponse)
 async def model(request: Request, model: str = Form(...), split: float = Form(...)):
-    bashCommand = "python /home/lilian/project_cloud_computing/ml/model.py --model {} -split {}".format(model, split)
+    bashCommand = "python ./ml/model.py --model {} -split {}".format(model, split)
     output = subprocess.check_output(bashCommand, shell=True)
     return templates.TemplateResponse("algo_result.html", {"request": request, "output": output})
 
